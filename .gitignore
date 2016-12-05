@@ -1,0 +1,5 @@
+*.log
+*.pem
+*.key
+*.out
+node_modules/*
