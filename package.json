@@ -4,7 +4,7 @@
   "description": "A project to do stuff yo",
   "main": "index.js",
   "scripts": {
-    "start": "node_modules/.bin/nodemon backend/app.js",
+    "start": "node_modules/.bin/nodemon backend/server.js",
     "test": "./node_modules/.bin/jasmine-node test"
   },
   "repository": {
@@ -25,8 +25,8 @@
     "jsonwebtoken": "^7.1.9",
     "mongoose": "^4.7.1",
     "morgan": "^1.7.0",
-    "passport": "^0.3.2",
-    "passport-jwt": "^2.2.1",
+    "passport": "~0.3.2",
+    "passport-jwt": "~2.2.1",
     "request": "^2.79.0",
     "winston": "^2.3.0"
   },
@@ -38,8 +38,8 @@
     "gulp-sass": "latest",
     "gulp-uglify": "latest",
     "gulp-util": "latest",
-    "jasmine": "^2.5.2",
-    "jasmine-node": "^1.14.5",
+    "jasmine": "~2.5.2",
+    "jasmine-node": "~1.14.5",
     "nodemon": "^1.11.0"
   }
 }

@@ -1,0 +1,22 @@
+{
+  "name": "logger-io",
+  "homepage": "https://github.com/nagyben/logger-io",
+  "description": "Timestamp your life",
+  "main": "app.js",
+  "authors": [
+    "nagyben"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "angularjs#^1.5.9",
+    "bootstrap": "v4.0.0-alpha.5"
+  }
+}

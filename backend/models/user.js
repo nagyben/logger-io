@@ -1,18 +1,39 @@
+//https://matoski.com/article/jwt-express-node-mongoose/
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var bcrypt = require('bcrypt');
+
+var TagSchema = new Schema({
+  name: {
+    type: String,
+    required: true
+  }
+});
 
 var UserSchema = new Schema({
-  username: {
+  email: {
     type: String,
     unique: true,
     index: true,
     required: true
   },
-  encryptedPassword: {
+  password: {
     type: String,
     required: true
   },
-  admin: Boolean
+  admin: {
+    type: Boolean,
+    default: false,
+    required: false
+  },
+  tags: [TagSchema]
+}, {
+  toObject: {
+    virtuals: true
+  },
+  toJSON: {
+    virtuals: true
+  }
 });
 
 UserSchema.pre('save', function(next) {
