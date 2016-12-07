@@ -24,8 +24,4 @@ module.exports = function(passport) {
 			}
 		});
 	}));
-<<<<<<< HEAD
 };
-=======
-};
->>>>>>> 57e9ccaf125aa5ee9080b0a662c76d4c40af1e10
