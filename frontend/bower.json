@@ -17,6 +17,7 @@
   ],
   "dependencies": {
     "angular": "angularjs#^1.5.9",
-    "bootstrap": "v4.0.0-alpha.5"
+    "bootstrap": "v4.0.0-alpha.5",
+    "angular-ui-router": "0.3.1"
   }
 }

@@ -3,6 +3,7 @@ describe("user login", function() {
     expect(2+2).toEqual(4);
   });
   it("should display a login form", function() {
-
+    browser.get('http://localhost:8000');
+    expect(browser.getTitle()).toEqual('logger.io | login');
   });
 });

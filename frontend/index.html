@@ -2,9 +2,13 @@
 <html>
 <head>
   <title>logger.io</title>
-
+  <script src="js/lib/angular.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/angular-ui-router.min.js"></script>
 </head>
-<body>
-  
+<body ng-app="logger-io">
+  <div ui-view="header"></div>
+  <div ui-view="body"></div>
+  <div ui-view="footer"></div>
 </body>
 </html>

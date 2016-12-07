@@ -35,6 +35,7 @@
     "gulp-coffee": "latest",
     "gulp-concat": "latest",
     "gulp-connect": "latest",
+    "gulp-flatten": "^0.3.1",
     "gulp-sass": "latest",
     "gulp-uglify": "latest",
     "gulp-util": "latest",

@@ -9,6 +9,8 @@ var User = require('./models/user');
 var jwt = require('jsonwebtoken');
 var config = require('./config');
 
+var path = require('path');
+
 var app = express();
 
 var winston = require('winston');
@@ -29,11 +31,6 @@ app.use(morgan('dev'));
 
 app.use(passport.initialize());
 require('./passport')(passport);
-
-// Basic route
-app.get('/', function(req, res) {
-  res.send('Welcome to logger.io');
-});
 
 // error handler
 process.on('uncaughtException', function(err) {
@@ -70,16 +67,20 @@ app.get('/dummy', function(req, res) {
   });
 });
 
-var apiRoutes = express.Router();
+app.use(express.static(path.join(__dirname, '../frontend')));
 
-apiRoutes.get('/', function(req, res) {
-  res.json({
-    message: 'The logger.io API'
-  });
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, '../frontend', 'index.html'));
 });
 
 var userRoutes = require('./routes/userRoutes');
 var logRoutes = require('./routes/logRoutes');
+var apiRoutes = express.Router();
+apiRoutes.get('/', function(req, res) {
+  res.status(200).json({
+    message: 'The logger.io API'
+  });
+});
 
 app.use('/api', apiRoutes);
 app.use('/api/user', userRoutes);
