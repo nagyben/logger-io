@@ -1,0 +1,29 @@
+div.log-message-container {
+  display: flex;
+  div.log-message-body {
+    flex-grow: 1;
+    span.log-timestamp {
+
+    }
+    span.log-tag {
+
+    }
+    span.log-message {
+
+    }
+
+    input[type="text"] {
+      display: inline-block;
+      width: 400px;
+      border: none;
+      border-radius: 0;
+      padding: 0;
+    }
+  }
+  div.log-message-tools {
+
+  }
+  div.log-message-submit {
+
+  }
+}

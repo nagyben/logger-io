@@ -6,6 +6,8 @@ var morgan = require('morgan');
 var passport = require('passport');
 var User = require('./models/user');
 
+var NotFoundError = require('./errors/notFoundError');
+
 var jwt = require('jsonwebtoken');
 var config = require('./config');
 
@@ -22,10 +24,8 @@ winston.add(winston.transports.Console, {
 var port = process.env.PORT || 8000;
 mongoose.connect(config.database);
 
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true}));
 
 app.use(morgan('dev'));
 
@@ -34,19 +34,20 @@ require('./passport')(passport);
 
 // error handler
 process.on('uncaughtException', function(err) {
-    winston.error(err);
-		winston.error(JSON.stringify(err, null, 2));
+  winston.error(err);
+  winston.error(JSON.stringify(err, null, 2));
 });
 
 // debug user
 app.get('/dummy', function(req, res) {
   var user = new User();
-  user.email = "herp";
+  user.email = "herp@derp.com";
   user.password = "derp";
   user.save(function(err) {
     if (err) {
       switch (err.code) {
         case 11000:
+          winston.info(err);
           // duplicate entry, fine for our dummy route
           res.status(200)
             .json({

@@ -1,0 +1,22 @@
+<div id="log" class="container" ng-controller="logController" ng-init="getMessages()">
+  <div class="log-message-container" ng-repeat="log in logs">
+    <div class="log-message-body">
+      <span class="log-timestamp">[{{log.timestamp | date : 'dd.MM.yyyy HH:mm:ss'}}]</span> -
+      <span class="log-tag text-muted">{{log.tag | uppercase}}</span> -
+      <span class="log-message">{{log.message}}</span>
+    </div>
+    <div class="log-message-tools">
+      <i class="fa fa-pencil remove-log" aria-hidden="true"></i>
+      <i class="fa fa-times edit-log" aria-hidden="true" ng-click="removeMessage(log)"></i>
+    </div>
+  </div>
+  <form name="logForm" ng-submit="addMessage()">
+    <div class="log-message-container">
+      <div class="log-message-body">
+        <span class="log-timestamp">[{{now | date : 'dd.MM.yyyy HH:mm:ss'}}]</span> -
+        <span class="log-tag text-muted">{{newTag | uppercase}}</span> -
+        <input type="text" class="form-control" ng-model="newLogMessage" />
+      </div>
+    </div>
+  </form>
+</div>

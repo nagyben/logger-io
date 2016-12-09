@@ -6,11 +6,12 @@ var config = require('../config');
 var passport = require('../passport');
 
 userRouter.post('/register', function(req, res) {
-	var email = req.body.email;
-	var password = req.body.password;
+	var email = req.body.email || req.email;
+	var password = req.body.password || req.password;
 
 	if (!email || !password) {
-		res.json({
+		res.status(400)
+		.json({
 			success: false,
 			message: "Please enter a username and password"
 		});
@@ -22,9 +23,11 @@ userRouter.post('/register', function(req, res) {
 
 		newUser.save(function(err) {
 			if (err) {
-				return res.json({success: false, message: 'That email already exists'});
+				res.status(400)
+				.json({success: false, message: 'That email already exists'});
 			} else {
-				res.json({success: true, message: 'User created'});
+				res.status(200)
+				.json({success: true, message: 'User created'});
 			}
 		});
 	}
@@ -35,7 +38,8 @@ userRouter.post('/auth', function(req, res) {
 	var password = req.body.password;
 
 	if (!email || !password) {
-		res.json({
+		res.status(400)
+		.json({
 			success: false,
 			message: "Please enter a username and password"
 		});
@@ -53,7 +57,7 @@ userRouter.post('/auth', function(req, res) {
 				user.comparePassword(password, function(err, match) {
 					if (err) {
 						winston.error(err);
-						res.status(400)
+						res.status(401)
 							.json({
 								success: false,
 								message: 'Authentication failed. Please check your username and password'

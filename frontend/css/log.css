@@ -1,0 +1,10 @@
+div.log-message-container {
+  display: flex; }
+  div.log-message-container div.log-message-body {
+    flex-grow: 1; }
+    div.log-message-container div.log-message-body input[type="text"] {
+      display: inline-block;
+      width: 400px;
+      border: none;
+      border-radius: 0;
+      padding: 0; }

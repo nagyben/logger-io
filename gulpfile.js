@@ -11,11 +11,22 @@ gulp.task('jslibs', function() {
   .pipe(gulp.dest('./frontend/js/lib'));
 });
 
+gulp.task('csslibs', function() {
+  gulp.src('**/bower_components/**/bootstrap.min.css')
+  .pipe(flatten())
+  .pipe(gulp.dest('./frontend/css/lib'));
+});
+
 gulp.task('sass', function() {
   gulp.src('**/frontend/sass/*.scss')
   .pipe(sass({style: 'expanded'}))
     .on('error', gutil.log)
-  .pipe(gulp.dest('static/css'));
+  .pipe(flatten())
+  .pipe(gulp.dest('frontend/css'));
+});
+
+gulp.task('watch', function() {
+  gulp.watch('**/frontend/sass/*.scss', ['sass']);
 });
 
 // gulp.task('js', function() {

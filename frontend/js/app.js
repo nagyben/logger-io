@@ -1,1 +1,1 @@
-var app = angular.module('logger-io', ['ui.router']);
+var app = angular.module('logger.io', ['ui.router', 'uiRouterStyles']);

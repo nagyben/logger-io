@@ -7,20 +7,23 @@ angular.module('logger.io')
       .state('login', {
         url: '/',
         views: {
-          'header': {
-            templateUrl: 'static/parts/login_header.html'
-          },
           'body': {
-            templateUrl: 'static/parts/login_body.html'
-          },
-          'footer': {
-            templateUrl: 'static/parts/login_footer.html'
+            templateUrl: 'parts/login_body.html'
           }
         },
-        resolve: {
-          $title: function() {
-            return 'home';
+        data: {
+          css: 'css/login.css'
+        }
+      })
+      .state('log', {
+        url: '/log',
+        views: {
+          'body': {
+            templateUrl: 'parts/log_body.html'
           }
+        },
+        data: {
+          css: 'css/log.css'
         }
       });
   });
