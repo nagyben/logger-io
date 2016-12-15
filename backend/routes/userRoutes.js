@@ -5,7 +5,7 @@ var jwt = require('jsonwebtoken');
 var config = require('../config');
 var passport = require('../passport');
 
-userRouter.post('/register', function(req, res) {
+userRouter.post('/', function(req, res) {
 	var email = req.body.email || req.email;
 	var password = req.body.password || req.password;
 
@@ -63,7 +63,7 @@ userRouter.post('/auth', function(req, res) {
 								message: 'Authentication failed. Please check your username and password'
 							});
 					} else {
-						var token = jwt.sign(user, config.secret, {
+						var token = jwt.sign({id: user._id}, config.secret, {
 							expiresIn: "1d" // 24 hours
 						});
 

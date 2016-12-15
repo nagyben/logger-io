@@ -12,6 +12,7 @@ angular.module('logger.io')
         .then(
           function success(response) {
             if (response.status == 200) {
+              console.log(response.data.token);
               $window.sessionStorage.token = response.data.token;
               $.noty.closeAll();
               $state.go('log');

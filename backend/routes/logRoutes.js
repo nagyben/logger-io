@@ -12,6 +12,7 @@ logRouter.get('/',
     session: false
   }),
   function(req, res) {
+    console.log(req.user._id);
     LogMessage.find({
       'userId': req.user.id
     }, function(err, logMessages) {
@@ -53,13 +54,54 @@ logRouter.post('/',
     });
   });
 
+logRouter.put('/:id',
+  passport.authenticate('jwt', {
+    session: false
+  }),
+  function(req, res) {
+    var tag = req.body.tag || 'info';
+    var message = req.body.message;
+    if (message) {
+      if (req.params.id) {
+        LogMessage.findOne({
+          _id: req.params.id
+        }, function(err, logMessage) {
+          if (!err) {
+            logMessage.tag = tag;
+            logMessage.message = message;
+            res.status(200)
+              .json({
+                sucess: true,
+                logMessage: {
+                  tag: tag,
+                  message: message
+                }
+              });
+          } else {
+            res.status(400)
+              .json({
+                success: false,
+                message: 'Message not edited'
+              });
+          }
+        });
+      } else {
+        res.status(400)
+          .json({
+            success: false,
+            message: 'No message id given'
+          });
+      }
+    }
+  });
+
 logRouter.delete('/:id',
   passport.authenticate('jwt', {
     session: false
   }),
   function(req, res) {
     if (req.params.id) {
-      LogMessage.find({
+      LogMessage.findOne({
         _id: req.params.id
       }).remove(function(err) {
         if (!err) {

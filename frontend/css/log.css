@@ -1,10 +1,54 @@
-div.log-message-container {
-  display: flex; }
-  div.log-message-container div.log-message-body {
-    flex-grow: 1; }
-    div.log-message-container div.log-message-body input[type="text"] {
-      display: inline-block;
-      width: 400px;
-      border: none;
-      border-radius: 0;
-      padding: 0; }
+body::-webkit-scrollbar {
+  width: 0 !important; }
+
+div#log {
+  flex-direction: column;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  padding-bottom: 10vh;
+  justify-content: flex-end; }
+  div#log div.log-message-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap; }
+    div#log div.log-message-container div.date-separator {
+      width: 100%; }
+    div#log div.log-message-container div.log-message-time-tag span.log-tag.new {
+      cursor: pointer;
+      font-weight: bold; }
+    div#log div.log-message-container div.log-message-time-tag div.dropdown {
+      display: inline-block; }
+      div#log div.log-message-container div.log-message-time-tag div.dropdown div.dropdown-menu {
+        min-width: 0;
+        padding: 0; }
+        div#log div.log-message-container div.log-message-time-tag div.dropdown div.dropdown-menu li {
+          cursor: pointer;
+          text-transform: uppercase; }
+          div#log div.log-message-container div.log-message-time-tag div.dropdown div.dropdown-menu li.active, div#log div.log-message-container div.log-message-time-tag div.dropdown div.dropdown-menu li:hover {
+            background-color: #d1d1d1; }
+    div#log div.log-message-container div.log-message-body {
+      flex-grow: 1; }
+      div#log div.log-message-container div.log-message-body input[type="text"] {
+        display: inline-block;
+        width: 100%;
+        border: none;
+        border-radius: 0;
+        padding: 0; }
+    div#log div.log-message-container div.log-message-tools {
+      visibility: hidden; }
+      div#log div.log-message-container div.log-message-tools i {
+        cursor: pointer; }
+        div#log div.log-message-container div.log-message-tools i:hover {
+          color: black !important; }
+    div#log div.log-message-container:hover > div.log-message-body {
+      font-weight: bold; }
+    div#log div.log-message-container:hover > div.log-message-tools {
+      visibility: visible; }
+    div#log div.log-message-container div.log-message-count.max {
+      color: #833131 !important;
+      font-weight: bold; }
+  div#log ul {
+    padding: 0;
+    margin: 0;
+    list-style: none; }

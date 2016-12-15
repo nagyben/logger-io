@@ -9,6 +9,9 @@ angular.module('logger.io')
         views: {
           'body': {
             templateUrl: 'parts/login_body.html'
+          },
+          'header': {
+            templateUrl: 'parts/header.html'
           }
         },
         data: {
@@ -20,6 +23,23 @@ angular.module('logger.io')
         views: {
           'body': {
             templateUrl: 'parts/log_body.html'
+          },
+          'header': {
+            templateUrl: 'parts/header.html'
+          }
+        },
+        data: {
+          css: 'css/log.css'
+        }
+      })
+      .state('register', {
+        url: '/register',
+        views: {
+          'body': {
+            templateUrl: 'parts/register_body.html'
+          },
+          'header': {
+            templateUrl: 'parts/header.html'
           }
         },
         data: {

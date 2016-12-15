@@ -1,0 +1,20 @@
+<div id="register" class="container" ng-controller="registerController">
+  <a href="#" ui-sref="login">login</a>
+  <div class="register">
+    <form name="registerForm">
+      <div class="form-group">
+        <label for="email">email address</label>
+        <input type="email" class="form-control" id="email" placeholder="email" ng-model="email" />
+      </div>
+      <div class="form-group">
+        <label for="password">password</label>
+        <input type="password" class="form-control" id="password" placeholder="password" ng-model="password" />
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">confirm password</label>
+        <input type="password" class="form-control" id="confirmPassword" placeholder="confirm password" ng-model="confirmPassword" />
+      </div>
+      <button type="submit" class="btn btn-primary" ng-click="register()" ng-disabled="registerForm.$invalid || (password != confirmPassword)">Register</button>
+    </form>
+  </div>
+</div>
