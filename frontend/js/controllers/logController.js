@@ -1,5 +1,6 @@
 angular.module('logger.io')
-  .controller('logController', function($scope, $http, $timeout) {
+  .controller('logController', function($scope, $http, $timeout, $window) {
+    $scope.width = $window.innerWidth;
     $scope.logs = [];
     $scope.newLogMessage = "";
     $scope.now = Date.now();
@@ -118,6 +119,13 @@ angular.module('logger.io')
         return false;
       }
     };
+  
+    angular.element($window).bind('resize', function(){
+      $scope.width = $window.innerWidth;
+      // manuall $digest required as resize event
+      // is outside of angular
+      $scope.$digest();
+    });
 
     document.onkeydown = keyDownHandler;
     document.onkeyup = keyUpHandler;

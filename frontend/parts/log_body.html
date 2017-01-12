@@ -4,7 +4,7 @@
       ================== {{log.timestamp|date:'EEEE dd MMMM'}} ==================
     </div>
     <div class="log-message-time-tag">
-      <span class="log-timestamp">[{{log.timestamp | date : 'dd.MM.yyyy HH:mm:ss'}}]</span> -
+      <span class="log-timestamp">[<span class="date" ng-hide="width < 1000">{{log.timestamp | date : 'dd.MM.yyyy'}} </span><span class="time">{{log.timestamp | date : 'HH:mm:ss'}}</span>]</span> -
       <span class="log-tag text-muted">{{log.tag | uppercase}}</span>
       <span> -&nbsp;</span>
     </div>

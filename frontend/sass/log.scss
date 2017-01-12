@@ -9,6 +9,12 @@ div#log {
   min-height: 100vh;
   padding-bottom: 10vh;
   justify-content: flex-end;
+  max-width: 1000px;
+  font-size: 0.9rem;
+  
+  @media (screen and max-width: 993px) {
+    font-size: 0.8rem;
+  }
 
   div.log-message-container {
     width: 100%;
