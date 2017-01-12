@@ -11,9 +11,14 @@ div#log {
   justify-content: flex-end;
   max-width: 1000px;
   font-size: 0.9rem;
-  
-  @media (screen and max-width: 993px) {
+  margin: auto;
+
+  @media (max-width: 880px) {
     font-size: 0.8rem;
+  }
+
+  @media (max-width: 830px) {
+    // font-size: 0.7rem;
   }
 
   div.log-message-container {
@@ -55,6 +60,7 @@ div#log {
 
     div.log-message-body {
       flex-grow: 1;
+      word-wrap: break-word;
 
       input[type="text"] {
         display: inline-block;
