@@ -1,4 +1,4 @@
-<div id="log" class="container" ng-controller="logController" ng-init="getMessages()">
+<div id="log" ng-controller="logController" ng-init="getMessages()">
   <div class="log-message-container" ng-repeat="log in logs">
     <div class="date-separator text-xs-center text-muted" ng-if="$index > 0 && (logs[$index-1].timestamp|date:'dd') != (log.timestamp|date:'dd')">
       ================== {{log.timestamp|date:'EEEE dd MMMM'}} ==================
@@ -21,8 +21,7 @@
   </div>
   <div class="log-message-container">
     <div class="log-message-time-tag">
-      <span class="log-timestamp">[{{now | date : 'dd.MM.yyyy HH:mm:ss'}}]</span>
-      <span> - </span>
+      <span class="log-timestamp">[<span class="date" ng-hide="width < 1000">{{now | date : 'dd.MM.yyyy'}} </span><span class="time">{{now | date : 'HH:mm:ss'}}</span>]</span> -
       <div class="dropdown">
         <span class="log-tag new text-muted"><a ng-click="toggleTagDropdown()" ng-style="{color: newTag.color}">{{newTag.name | uppercase}}</a></span>
         <div class="dropdown-menu">
@@ -35,7 +34,7 @@
     </div>
     <div class="log-message-body">
       <form name="logForm" ng-submit="addMessage()">
-        <input id="logInput" type="text" class="form-control" ng-model="newLogMessage" maxlength="80" placeholder="Type log message here..."/>
+        <input id="logInput" type="text" class="form-control" ng-model="newLogMessage" maxlength="80" placeholder="Type log message here..." autocomplete="off"/>
       </form>
     </div>
     <div class="log-message-count text-muted" ng-class="{max: newLogMessage.length == 80}">
