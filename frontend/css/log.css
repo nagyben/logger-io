@@ -26,22 +26,32 @@ div#log {
     div#log div.log-message-container div.log-message-time-tag div.dropdown {
       display: inline-block; }
       div#log div.log-message-container div.log-message-time-tag div.dropdown div.dropdown-menu {
+        font-size: 1em;
         min-width: 0;
-        padding: 0; }
-        div#log div.log-message-container div.log-message-time-tag div.dropdown div.dropdown-menu li {
+        padding: 0;
+        display: flex;
+        flex-direction: row; }
+        div#log div.log-message-container div.log-message-time-tag div.dropdown div.dropdown-menu div.log-tag {
           cursor: pointer;
-          text-transform: uppercase; }
-          div#log div.log-message-container div.log-message-time-tag div.dropdown div.dropdown-menu li.active, div#log div.log-message-container div.log-message-time-tag div.dropdown div.dropdown-menu li:hover {
+          text-transform: uppercase;
+          font-size: 1em;
+          padding: 0;
+          margin-left: 2px; }
+          div#log div.log-message-container div.log-message-time-tag div.dropdown div.dropdown-menu div.log-tag:first-child {
+            margin-left: 0; }
+          div#log div.log-message-container div.log-message-time-tag div.dropdown div.dropdown-menu div.log-tag.active, div#log div.log-message-container div.log-message-time-tag div.dropdown div.dropdown-menu div.log-tag:hover {
             background-color: #d1d1d1; }
     div#log div.log-message-container div.log-message-body {
       flex-grow: 1;
       word-wrap: break-word; }
       div#log div.log-message-container div.log-message-body input[type="text"] {
+        font-size: 1em;
         display: inline-block;
         width: 100%;
         border: none;
         border-radius: 0;
-        padding: 0; }
+        padding: 0;
+        font-weight: normal !important; }
     div#log div.log-message-container div.log-message-tools {
       visibility: hidden; }
       div#log div.log-message-container div.log-message-tools i {

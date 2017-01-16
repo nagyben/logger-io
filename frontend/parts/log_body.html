@@ -25,9 +25,7 @@
       <div class="dropdown">
         <span class="log-tag new text-muted"><a ng-click="toggleTagDropdown()" ng-style="{color: newTag.color}">{{newTag.name | uppercase}}</a></span>
         <div class="dropdown-menu">
-          <ul>
-            <li ng-repeat="tag in tags" ng-class="{active: newTag == tag}"><a href="" ng-click="selectTag(tag)" ng-style="{color: tag.color}">{{tag.name}}</a></li>
-          </ul>
+          <div class="log-tag" ng-repeat="tag in tags" ng-class="{active: newTag == tag}"><a href="" ng-click="selectTag(tag)" ng-style="{color: tag.color}">{{tag.name}}</a></div>
         </div>
       </div>
       <span> -&nbsp;</span>
