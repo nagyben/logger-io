@@ -1,7 +1,7 @@
 <div id="log" ng-controller="logController" ng-init="getMessages()">
-  <div class="log-message-container" ng-repeat="log in logs">
-    <div class="date-separator text-xs-center text-muted" ng-if="$index > 0 && (logs[$index-1].timestamp|date:'dd') != (log.timestamp|date:'dd')">
-      {{log.timestamp|date:'EEEE dd MMMM'}}
+  <div class="log-message-container" ng-repeat="log in logs" ng-show="(filterTag.name|uppercase)==(log.tag|uppercase)||filterTag==''">
+    <div class="date-separator text-muted" ng-if="$index > 0 && (logs[$index-1].timestamp|date:'dd') != (log.timestamp|date:'dd')">
+      -------------------------- {{log.timestamp|date:'EEEE dd MMMM'}}
     </div>
     <div class="log-message-time-tag">
       <span class="log-timestamp">[<span class="date" ng-hide="width < 1000">{{log.timestamp | date : 'dd.MM.yyyy'}} </span><span class="time">{{log.timestamp | date : 'HH:mm:ss'}}</span>]</span> -
@@ -15,8 +15,8 @@
       <i class="fa fa-pencil remove-log" aria-hidden="true"></i>
       <i class="fa fa-times edit-log" aria-hidden="true" ng-click="removeMessage(log)"></i>
     </div>
-    <div class="date-separator text-xs-center text-muted" ng-if="$last && (log.timestamp|date:'dd') != (now|date:'dd')">
-      {{now|date:'EEEE dd MMMM'}}
+    <div class="date-separator text-muted" ng-if="$last && (log.timestamp|date:'dd') != (now|date:'dd')">
+      -------------------------- {{now|date:'EEEE dd MMMM'}}
     </div>
   </div>
   <div class="log-message-container">
@@ -25,7 +25,9 @@
       <div class="dropdown">
         <span class="log-tag new text-muted"><a ng-click="toggleTagDropdown()" ng-style="{color: newTag.color}">{{newTag.name | uppercase}}</a></span>
         <div class="dropdown-menu">
-          <div class="log-tag" ng-repeat="tag in tags" ng-class="{active: newTag == tag}"><a href="" ng-click="selectTag(tag)" ng-style="{color: tag.color}">{{tag.name}}</a></div>
+          <div class="log-tag" ng-repeat="tag in tags" ng-class="{active: newTag == tag}">
+            <a href="" ng-click="selectTag(tag)" ng-style="{color: tag.color}">{{tag.name}}</a>
+          </div>
         </div>
       </div>
       <span> -&nbsp;</span>
@@ -37,6 +39,17 @@
     </div>
     <div class="log-message-count text-muted" ng-class="{max: newLogMessage.length == 80}">
       {{newLogMessage.length}}
+    </div>
+  </div>
+  <div class="toolbox">
+    <div class="toolbox-filter-container">
+      <h3>Filter</h3>
+      <div class="filter-tag">
+        <a href="" ng-click="clearTagFilter()">All</a>
+      </div>
+      <div class="filter-tag" ng-repeat="tag in tags">
+        <a href="" ng-click="filterByTag(tag)">{{tag.name}}</a>
+      </div>
     </div>
   </div>
 </div>

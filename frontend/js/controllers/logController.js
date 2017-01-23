@@ -23,6 +23,7 @@ angular.module('logger.io')
       }
   ];
     $scope.newTag = $scope.tags[0];
+    $scope.filterTag = "";
 
     $scope.removeMessage = function(message) {
       $http
@@ -89,8 +90,17 @@ angular.module('logger.io')
 
     $scope.selectTag = function(tag) {
       $scope.newTag = tag;
-      $(".dropdown-menu").hide();
+      // $(".dropdown-menu").hide();
     };
+
+    $scope.clearTagFilter = function() {
+      $scope.filterTag = "";
+    };
+
+    $scope.filterByTag = function(tag) {
+      $scope.filterTag = tag;
+    };
+
 
     var tick = function() {
       $scope.now = Date.now();
@@ -119,7 +129,7 @@ angular.module('logger.io')
         return false;
       }
     };
-  
+
     angular.element($window).bind('resize', function(){
       $scope.width = $window.innerWidth;
       // manuall $digest required as resize event
